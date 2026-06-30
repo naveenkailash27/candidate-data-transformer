@@ -1,0 +1,11 @@
+{
+  "login": "janedoe",
+  "name": "Jane Doe",
+  "email": "jane.doe@gmail.com",
+  "bio": "Backend engineer building distributed systems",
+  "company": "Acme",
+  "blog": "https://janedoe.dev",
+  "location": "San Francisco, CA, US",
+  "html_url": "https://github.com/janedoe",
+  "languages": ["Python", "Go", "JavaScript", "k8s"]
+}

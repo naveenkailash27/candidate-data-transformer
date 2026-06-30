@@ -1,0 +1,11 @@
+{
+  "login": "jsmith",
+  "name": "John Smith",
+  "email": null,
+  "bio": "Data scientist, ML enthusiast",
+  "company": "Globex",
+  "blog": "",
+  "location": "London, England, GB",
+  "html_url": "https://github.com/jsmith",
+  "languages": ["Python", "R", "SQL", "wizardry"]
+}
