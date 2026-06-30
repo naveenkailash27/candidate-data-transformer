@@ -1,0 +1,23 @@
+[
+  {
+    "full_name": "Jane Doe",
+    "primary_email": "jane.doe@gmail.com",
+    "phone": "+14155552671",
+    "country": "US",
+    "skills": [
+      "Go",
+      "JavaScript",
+      "Kubernetes",
+      "Python"
+    ],
+    "overall_confidence": 0.79
+  },
+  {
+    "full_name": "Priya Patel",
+    "primary_email": "priya.patel@outlook.com",
+    "phone": null,
+    "country": null,
+    "skills": [],
+    "overall_confidence": 0.7
+  }
+]

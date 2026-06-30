@@ -22,7 +22,8 @@ def extract_csv(path: str | Path) -> list[SourceRecord] | ExtractionFailure:
     except csv.Error as exc:
         return ExtractionFailure(SOURCE, str(path), f"malformed csv: {exc}")
 
-    return [_row_to_record(row, i) for i, row in enumerate(rows)]
+    records = [_row_to_record(row, i) for i, row in enumerate(rows)]
+    return [r for r in records if r.fields]
 
 
 def _row_to_record(row: dict, idx: int) -> SourceRecord:

@@ -1,0 +1,312 @@
+[
+  {
+    "candidate_id": "c_2be428ff",
+    "full_name": "Jane Doe",
+    "emails": [
+      "jane.doe@gmail.com"
+    ],
+    "phones": [
+      "+14155552671"
+    ],
+    "location": {
+      "city": "San Francisco",
+      "region": "CA",
+      "country": "US"
+    },
+    "links": {
+      "linkedin": null,
+      "github": "https://github.com/janedoe",
+      "portfolio": "https://janedoe.dev",
+      "other": []
+    },
+    "headline": "Backend engineer building distributed systems",
+    "years_experience": null,
+    "skills": [
+      {
+        "name": "Go",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "name": "JavaScript",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "name": "Kubernetes",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "name": "Python",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      }
+    ],
+    "unmatched_skills": [],
+    "experience": [
+      {
+        "company": "Acme",
+        "title": "Software Engineer",
+        "start": null,
+        "end": null,
+        "summary": null,
+        "ongoing": true
+      }
+    ],
+    "education": [],
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": [
+          "csv",
+          "github"
+        ],
+        "method": "merged_agreement"
+      },
+      {
+        "field": "emails",
+        "source": [
+          "csv",
+          "github"
+        ],
+        "method": "merged_agreement"
+      },
+      {
+        "field": "phones",
+        "source": [
+          "csv"
+        ],
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": [
+          "github"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "links",
+        "source": [
+          "github"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "headline",
+        "source": [
+          "github"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "skills",
+        "source": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": [
+          "csv",
+          "github"
+        ],
+        "method": "direct_mapping"
+      }
+    ],
+    "overall_confidence": 0.79
+  },
+  {
+    "candidate_id": "c_33dcc325",
+    "full_name": "John Smith",
+    "emails": [],
+    "phones": [
+      "+442079460958"
+    ],
+    "location": {
+      "city": "London",
+      "region": "England",
+      "country": "GB"
+    },
+    "links": {
+      "linkedin": null,
+      "github": "https://github.com/jsmith",
+      "portfolio": null,
+      "other": []
+    },
+    "headline": "Data scientist, ML enthusiast",
+    "years_experience": null,
+    "skills": [
+      {
+        "name": "Python",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "name": "R",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "name": "SQL",
+        "confidence": 0.7,
+        "sources": [
+          "github"
+        ],
+        "method": "normalized"
+      }
+    ],
+    "unmatched_skills": [
+      {
+        "raw_text": "wizardry",
+        "sources": [
+          "github"
+        ],
+        "confidence": 0.42
+      }
+    ],
+    "experience": [
+      {
+        "company": "Globex",
+        "title": "Data Scientist",
+        "start": null,
+        "end": null,
+        "summary": null,
+        "ongoing": true
+      }
+    ],
+    "education": [],
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": [
+          "csv",
+          "github"
+        ],
+        "method": "merged_agreement"
+      },
+      {
+        "field": "phones",
+        "source": [
+          "csv"
+        ],
+        "method": "normalized"
+      },
+      {
+        "field": "location",
+        "source": [
+          "github"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "links",
+        "source": [
+          "github"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "headline",
+        "source": [
+          "github"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "skills",
+        "source": [
+          "github"
+        ],
+        "method": "normalized"
+      },
+      {
+        "field": "experience",
+        "source": [
+          "csv",
+          "github"
+        ],
+        "method": "direct_mapping"
+      }
+    ],
+    "overall_confidence": 0.62
+  },
+  {
+    "candidate_id": "c_b10049df",
+    "full_name": "Priya Patel",
+    "emails": [
+      "priya.patel@outlook.com"
+    ],
+    "phones": [],
+    "location": {
+      "city": null,
+      "region": null,
+      "country": null
+    },
+    "links": {
+      "linkedin": null,
+      "github": null,
+      "portfolio": null,
+      "other": []
+    },
+    "headline": null,
+    "years_experience": null,
+    "skills": [],
+    "unmatched_skills": [],
+    "experience": [
+      {
+        "company": "Initech",
+        "title": "Backend Engineer",
+        "start": null,
+        "end": null,
+        "summary": null,
+        "ongoing": true
+      }
+    ],
+    "education": [],
+    "provenance": [
+      {
+        "field": "full_name",
+        "source": [
+          "csv"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "emails",
+        "source": [
+          "csv"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "experience",
+        "source": [
+          "csv"
+        ],
+        "method": "direct_mapping"
+      }
+    ],
+    "overall_confidence": 0.7
+  }
+]
