@@ -20,15 +20,24 @@
       "other": []
     },
     "headline": "Backend engineer building distributed systems",
-    "years_experience": null,
+    "years_experience": 9.9,
     "skills": [
       {
-        "name": "Go",
+        "name": "Docker",
         "confidence": 0.7,
         "sources": [
-          "github"
+          "resume"
         ],
         "method": "normalized"
+      },
+      {
+        "name": "Go",
+        "confidence": 0.85,
+        "sources": [
+          "github",
+          "resume"
+        ],
+        "method": "merged_agreement"
       },
       {
         "name": "JavaScript",
@@ -40,19 +49,29 @@
       },
       {
         "name": "Kubernetes",
+        "confidence": 0.85,
+        "sources": [
+          "github",
+          "resume"
+        ],
+        "method": "merged_agreement"
+      },
+      {
+        "name": "PostgreSQL",
         "confidence": 0.7,
         "sources": [
-          "github"
+          "resume"
         ],
         "method": "normalized"
       },
       {
         "name": "Python",
-        "confidence": 0.7,
+        "confidence": 0.85,
         "sources": [
-          "github"
+          "github",
+          "resume"
         ],
-        "method": "normalized"
+        "method": "merged_agreement"
       }
     ],
     "unmatched_skills": [],
@@ -60,19 +79,35 @@
       {
         "company": "Acme",
         "title": "Software Engineer",
-        "start": null,
+        "start": "2019-03",
         "end": null,
-        "summary": null,
+        "summary": "Built and scaled distributed backend services.",
         "ongoing": true
+      },
+      {
+        "company": "Initech",
+        "title": "Junior Developer",
+        "start": "2016-06",
+        "end": "2019-02",
+        "summary": "Maintained internal tooling and data pipelines.",
+        "ongoing": false
       }
     ],
-    "education": [],
+    "education": [
+      {
+        "institution": "UC Berkeley",
+        "degree": "B.S",
+        "field": "Computer Science",
+        "end_year": 2016
+      }
+    ],
     "provenance": [
       {
         "field": "full_name",
         "source": [
           "csv",
-          "github"
+          "github",
+          "resume"
         ],
         "method": "merged_agreement"
       },
@@ -80,14 +115,16 @@
         "field": "emails",
         "source": [
           "csv",
-          "github"
+          "github",
+          "resume"
         ],
         "method": "merged_agreement"
       },
       {
         "field": "phones",
         "source": [
-          "csv"
+          "csv",
+          "resume"
         ],
         "method": "normalized"
       },
@@ -115,20 +152,38 @@
       {
         "field": "skills",
         "source": [
-          "github"
+          "github",
+          "resume"
         ],
-        "method": "normalized"
+        "method": "merged_agreement"
       },
       {
         "field": "experience",
         "source": [
           "csv",
-          "github"
+          "github",
+          "resume"
         ],
         "method": "direct_mapping"
+      },
+      {
+        "field": "education",
+        "source": [
+          "resume"
+        ],
+        "method": "direct_mapping"
+      },
+      {
+        "field": "years_experience",
+        "source": [
+          "csv",
+          "github",
+          "resume"
+        ],
+        "method": "interval_merge"
       }
     ],
-    "overall_confidence": 0.79
+    "overall_confidence": 0.83
   },
   {
     "candidate_id": "c_33dcc325",

@@ -5,12 +5,14 @@
     "phone": "+14155552671",
     "country": "US",
     "skills": [
+      "Docker",
       "Go",
       "JavaScript",
       "Kubernetes",
+      "PostgreSQL",
       "Python"
     ],
-    "overall_confidence": 0.79
+    "overall_confidence": 0.83
   },
   {
     "full_name": "Priya Patel",

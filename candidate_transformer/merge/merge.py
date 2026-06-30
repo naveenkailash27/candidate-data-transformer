@@ -7,6 +7,7 @@ from ..adapters.base import SourceRecord
 from ..confidence.scorer import agreement_confidence, overall_confidence
 from ..models import (
     CanonicalProfile,
+    Education,
     Experience,
     Links,
     Location,
@@ -193,6 +194,28 @@ def _merge_experience(cluster: list[SourceRecord]):
     return [Experience(**m) for m in merged], sorted(sources)
 
 
+def _merge_education(cluster: list[SourceRecord]):
+    raw: list[dict] = []
+    sources: set[str] = set()
+    for r in cluster:
+        fv = r.fields.get("education")
+        if not fv:
+            continue
+        sources.add(r.source)
+        raw.extend(fv.value)
+
+    out: list[Education] = []
+    seen: set[tuple] = set()
+    for e in raw:
+        inst = e.get("institution")
+        key = (str(inst).lower() if inst else "", str(e.get("degree") or "").lower(), e.get("end_year"))
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(Education(institution=inst, degree=e.get("degree"), field=e.get("field"), end_year=e.get("end_year")))
+    return out, sorted(sources)
+
+
 def _years_experience(experiences: list[Experience], reference: date):
     ref_ord = reference.year * 12 + reference.month
     intervals: list[tuple[int, int]] = []
@@ -248,6 +271,7 @@ def build_profile(cluster: list[SourceRecord], reference: date | None = None) ->
     headline, head_conf, head_method, head_src = _pick_scalar(_collect(cluster, "headline"), "default")
     skills, unmatched_skills = _merge_skills(cluster)
     experience, exp_src = _merge_experience(cluster)
+    education, edu_src = _merge_education(cluster)
     years, malformed = _years_experience(experience, reference)
 
     def add(field: str, sources: list[str], method: str, conf: float):
@@ -278,6 +302,8 @@ def build_profile(cluster: list[SourceRecord], reference: date | None = None) ->
         add("skills", skill_sources, method, avg)
     if experience:
         add("experience", exp_src, Method.DIRECT_MAPPING.value, agreement_confidence(len(exp_src), False))
+    if education:
+        add("education", edu_src, Method.DIRECT_MAPPING.value, agreement_confidence(len(edu_src), False))
     if years is not None:
         method = Method.FLAGGED_MALFORMED.value if malformed else Method.INTERVAL_MERGE.value
         add("years_experience", exp_src, method, 0.6 if malformed else 0.8)
@@ -294,7 +320,7 @@ def build_profile(cluster: list[SourceRecord], reference: date | None = None) ->
         skills=skills,
         unmatched_skills=unmatched_skills,
         experience=experience,
-        education=[],
+        education=education,
         provenance=prov,
         overall_confidence=overall_confidence(fconf, present),
     )

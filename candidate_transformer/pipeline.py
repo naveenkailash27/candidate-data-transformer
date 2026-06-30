@@ -7,6 +7,7 @@ from pathlib import Path
 from .adapters.base import ExtractionFailure, SourceRecord
 from .adapters.csv_adapter import extract_csv
 from .adapters.github_adapter import extract_github
+from .adapters.resume_adapter import extract_resume
 from .merge.merge import merge_records
 from .models import CanonicalProfile
 from .project.config import ProjectionConfig
@@ -38,6 +39,15 @@ def collect_records(inputs_dir: Path) -> tuple[list[SourceRecord], list[Extracti
         fixtures = inputs_dir / "github"
         for url in urls_file.read_text(encoding="utf-8").split():
             result = extract_github(url, fixtures)
+            if isinstance(result, ExtractionFailure):
+                failures.append(result)
+            else:
+                records.append(result)
+
+    resumes_dir = inputs_dir / "resumes"
+    if resumes_dir.exists():
+        for resume in sorted(list(resumes_dir.glob("*.pdf")) + list(resumes_dir.glob("*.txt"))):
+            result = extract_resume(resume)
             if isinstance(result, ExtractionFailure):
                 failures.append(result)
             else:
