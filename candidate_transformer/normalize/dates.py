@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from datetime import datetime
 
 from dateutil import parser as dateparser
@@ -19,6 +20,14 @@ def normalize_month(raw: object) -> str | None:
     text = str(raw).strip()
     if not text or is_present(text):
         return None
+
+    m = re.fullmatch(r"(\d{1,2})[/-](\d{4})", text)
+    if m and 1 <= int(m.group(1)) <= 12:
+        return f"{m.group(2)}-{int(m.group(1)):02d}"
+    m = re.fullmatch(r"(\d{4})[/-](\d{1,2})", text)
+    if m and 1 <= int(m.group(2)) <= 12:
+        return f"{m.group(1)}-{int(m.group(2)):02d}"
+
     if text.isdigit() and len(text) == 4:
         return f"{text}-01"
     try:

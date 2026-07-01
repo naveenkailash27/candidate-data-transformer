@@ -1,9 +1,13 @@
 from __future__ import annotations
 
+import re
+
 from rapidfuzz import fuzz
 
 from ..adapters.base import SourceRecord
 from ..normalize.phone import normalize_phone
+
+_GITHUB_HANDLE = re.compile(r"github\.com/([A-Za-z0-9-]+)", re.I)
 
 NAME_THRESHOLD = 90
 TITLE_THRESHOLD = 85
@@ -59,7 +63,9 @@ def _title(r: SourceRecord) -> str | None:
 def _github(r: SourceRecord) -> str | None:
     fv = r.fields.get("links")
     if fv:
-        return (fv.value.get("github") or "").strip().lower() or None
+        m = _GITHUB_HANDLE.search(fv.value.get("github") or "")
+        if m:
+            return m.group(1).lower()
     return None
 
 

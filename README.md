@@ -13,7 +13,28 @@ Turns messy, overlapping candidate data from many sources into **one clean, cano
 ```bash
 # Python 3.11+
 python -m pip install -r requirements.txt
+```
 
+**Interactive mode** — run with no arguments. It prompts for the inputs folder and how to shape the output, including a **live runtime-config builder** where you pick fields and choose missing-value behavior without editing any file:
+
+```bash
+python cli.py
+# Inputs folder [sample_inputs]:
+# Output shape:
+#   1. Default schema (full canonical profile)
+#   2. Load a config file
+#   3. Build a runtime config now (no file needed)
+# Pick [1]: 3
+# Include which fields? (comma numbers, or 'a' for all) [a]: 2,3,4,9
+# On missing value:  1) null   2) omit   3) error   [1]: 2
+# Include provenance? [y/N]: y
+# Include confidence? [y/N]: y
+# ...prints the reshaped JSON...
+```
+
+**Flag mode** — point it at files and print/write JSON (for scripting / determinism):
+
+```bash
 # Default canonical schema, all sources in the directory
 python cli.py --inputs sample_inputs --out output/profiles.json --reference 2026-06-30
 

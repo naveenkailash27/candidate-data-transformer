@@ -72,3 +72,43 @@ class TestCli:
         out = tmp_path / "o.json"
         rc = main(["--inputs", str(SAMPLES), "--config", str(bad), "--out", str(out)])
         assert rc == 2
+
+
+class TestInteractive:
+    def _run(self, monkeypatch, answers):
+        from cli import main
+
+        it = iter(answers)
+        monkeypatch.setattr("builtins.input", lambda *a: next(it))
+        return main([])
+
+    def test_interactive_default(self, monkeypatch, capsys):
+        rc = self._run(monkeypatch, [str(SAMPLES), "1", "2026-06-30", ""])
+        assert rc == 0
+        out = capsys.readouterr().out
+        assert '"full_name"' in out and '"provenance"' in out
+
+    def test_interactive_load_config_file(self, monkeypatch, capsys):
+        rc = self._run(monkeypatch, [str(SAMPLES), "2", "1", "2026-06-30", ""])
+        assert rc == 0
+        out = capsys.readouterr().out
+        assert '"primary_email"' in out
+        assert '"provenance"' not in out
+
+    def test_interactive_build_config_subset(self, monkeypatch, capsys):
+        # fields: full_name(2) + emails(3); on_missing omit; no provenance; no confidence
+        rc = self._run(monkeypatch, [str(SAMPLES), "3", "2,3", "2", "n", "n", "2026-06-30", ""])
+        assert rc == 0
+        out = capsys.readouterr().out
+        assert '"full_name"' in out and '"emails"' in out
+        assert '"provenance"' not in out and '"skills"' not in out
+
+    def test_interactive_build_config_toggles(self, monkeypatch, capsys):
+        rc = self._run(monkeypatch, [str(SAMPLES), "3", "a", "1", "y", "y", "2026-06-30", ""])
+        assert rc == 0
+        out = capsys.readouterr().out
+        assert '"provenance"' in out and '"overall_confidence"' in out
+
+    def test_interactive_missing_folder(self, monkeypatch):
+        rc = self._run(monkeypatch, ["no_such_folder", "1", "", ""])
+        assert rc == 1

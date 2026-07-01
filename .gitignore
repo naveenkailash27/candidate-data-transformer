@@ -1,6 +1,9 @@
 # Internal working docs
 arch.md
 
+# Personal / real-world test data (never commit)
+real_test/
+
 # Claude
 .claude/
 

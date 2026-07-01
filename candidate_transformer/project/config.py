@@ -7,6 +7,22 @@ from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field
 
 
+CANONICAL_FIELDS: dict[str, str] = {
+    "candidate_id": "string",
+    "full_name": "string",
+    "emails": "string[]",
+    "phones": "string[]",
+    "location": "object",
+    "links": "object",
+    "headline": "string",
+    "years_experience": "number",
+    "skills": "object[]",
+    "unmatched_skills": "object[]",
+    "experience": "object[]",
+    "education": "object[]",
+}
+
+
 class FieldSpec(BaseModel):
     model_config = ConfigDict(populate_by_name=True, extra="forbid")
 
